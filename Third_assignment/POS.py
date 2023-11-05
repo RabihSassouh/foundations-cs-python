@@ -1,6 +1,6 @@
-bill=0
+quantity=0
 finalBill=0
-listOfItems=[0]
+#listOfItems=[0]
 #coupon=0
 #Main menu
 def MainMenu():
@@ -26,7 +26,9 @@ def MainMenu():
             print("invalid value, please enter 1 or 2!")
 #New order
 def NewOrder():
+    listOfItems=[]
     coupon=0
+    bill=0
     choice=int(input(""))
     if choice==1:
         print("""Choose the item you want to add:
@@ -37,6 +39,80 @@ def NewOrder():
               5- Banana * 1 kg for 2.5$ *
               6- Olive * 1 kg for 4$ *
               """)
+        choice=int(input(""))
+        quantity=int(input("please enter the quantity you want to buy in kg: "))
+        if choice==1:
+            bill=bill + 2*quantity
+            listOfItems=listOfItems+[str(quantity) + "kg of tomato"]
+            print(listOfItems)
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
+        elif choice==2:
+            bill=bill + 3*quantity
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
+        elif choice==3:
+            bill=bill + quantity
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
+        elif choice==4:
+            bill=bill + 1.5*quantity
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
+        elif choice==5:
+            bill=bill + 2.5*quantity
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
+        elif choice==6:
+            bill=bill + 4*quantity
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
+        else:
+            print("invalid input!")
+            print("""Enter:
+                1- To add a new item.
+                2- To check the total of the bill
+                3- To delete an item from your list.
+                4- To add a coupon
+                5- To checkout.
+                """)
+            NewOrder()
     elif choice==2:
         print("your total bill is: ", bill)
         print("""Enter:
