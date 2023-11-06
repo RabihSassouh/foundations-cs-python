@@ -73,7 +73,8 @@ def NewOrder():
             print("your final bill is: ", finalBill,"$")
             print("Thank you for your visit...")
             order=False
-            
+        else:
+            print("invalid input please choose a relevant number!")
               
 #Main menu
 def MainMenu():
@@ -90,4 +91,7 @@ def MainMenu():
             print("bye bye!")
         else:
             print("invalid value, please enter 1 or 2!")
-MainMenu()
+try:
+    MainMenu()
+except:
+    print("invalid input,please restart the program!")
