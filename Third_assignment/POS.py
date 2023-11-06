@@ -1,11 +1,12 @@
 quantity=0
-finalBill=0
-FinalList=['0']
+
+#FinalList=['0']
 #coupon=0
 #NewOrder
 def NewOrder():
     listOfItems=[]
-#coupon=0
+    coupon=0
+    finalBill=0
     bill=0
     order=True
     while order ==True:
@@ -14,7 +15,8 @@ def NewOrder():
             2- To check the total of the bill
             3- To delete an item from your list.
             4- To add a coupon
-            5- To checkout.
+            5- To check the list of your items.
+            6- To checkout.
             """)
         choice=int(input(""))
         if choice==1:
@@ -32,36 +34,42 @@ def NewOrder():
             if choice==1:
                 bill=bill + 2*quantity
                 listOfItems=listOfItems+[str(quantity) + " kg of tomato"]
-                print(listOfItems)
-                print(bill)
+                # print(listOfItems)
+                # print(bill)
             elif choice==2:
                 bill=bill + 3*quantity
-                print(bill)
                 listOfItems=listOfItems+[str(quantity) + " kg of orange"]
-                print(listOfItems)
             elif choice==3:
                 bill=bill + quantity
                 listOfItems=listOfItems+[str(quantity) + " kg of potato"]
-                print(listOfItems)
-                print(bill)
             elif choice==4:
                 bill=bill + 1.5*quantity
                 listOfItems=listOfItems+[str(quantity) + " kg of carrot"]
-                print(listOfItems)
-                print(bill)
             elif choice==5:
                 bill=bill + 2.5*quantity
                 listOfItems=listOfItems+[str(quantity) + " kg of banana"]
-                print(listOfItems)
-                print(bill)
             elif choice==6:
                 bill=bill + 4*quantity
                 listOfItems=listOfItems+[str(quantity) + " kg of olive"]
-                print(listOfItems)
-                print(bill)
             else:
                 print("invalid input!")
+        elif choice==2:
+            print("your bill is: ",bill,"$")
+        elif choice==4:
+            coupon=int(input("please enter the value of your coupon: "))
+            finalBill=bill-coupon
+            print(finalBill)
+        elif choice==5:
+            print(listOfItems)
+        elif choice==6:
+            print("your purchased items:",listOfItems)
+            print("your total bill without any coupon is: ",bill,"$")
+            print("the total of your coupons is: ",coupon,"$")
+            print("your final bill is: ", finalBill,"$")
+            print("Thank you for your visit...")
+            order=False
             
+              
 #Main menu
 def MainMenu():
     choice=0
@@ -159,11 +167,7 @@ def NewOrder():
                 """)
         NewOrder()
     elif choice==5:
-        print("your bought items:",listOfItems)
-        print("your total bill without any coupon is: ",bill)
-        print("the total of your coupons is: ",coupon)
-        print("your final bill is: ", finalBill)
-        MainMenu()
+        
     else:
         print("invalid input!")
         NewOrder()'''
