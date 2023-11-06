@@ -53,6 +53,12 @@ def NewOrder():
                 print("invalid input!")
         elif choice==2:
             coupon=int(input("please enter the value of your coupon: "))
+        elif choice==3:
+            print(listOfItems)
+            ToBeDeleted=input("please enter the name of the item that you want to delete: ")
+            for x in listOfItems:
+                if ToBeDeleted in x:
+                    listOfItems.remove(x)
         elif choice==4:
             finalBill=bill-coupon
             print("your bill without any coupon is: ",bill,"$")
