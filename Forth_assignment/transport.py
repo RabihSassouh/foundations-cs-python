@@ -1,14 +1,18 @@
 cities=["beirut","saida","batroun","zgharta","aley","zahle"]
 drivers=["alex","rawad","jhony","mohamad"]
+#the function that will add a city to the list of cities.
+#O(len(cities))
 def add_city():
-    print("Please enter the name of the city you want to add!")
+    print("Please enter the name of the city you want to add!") #O(1)
     city=input("")
-    # for x in cities:
-    if city not in cities:
-        cities.append(city)
-    print(cities)
+    if city not in cities:      #O(len(cities))
+        cities.append(city)     #O(1)
+    else:
+        print("The city you entered already exists in the list!") #O(1)
+    print(cities)       #O(1)
 
 #the function that will run the main page.
+#
 def main():
     user_input=0
     while user_input !=7:
