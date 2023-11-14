@@ -1,5 +1,11 @@
-cities=["beirut","saida","batroun","zgharta","aley","zahle"]
+cities=["beirut","saida","batroun","zgharta","aley","zahle","sour","tripoli","akkar"]
 drivers=["alex","rawad","jhony","mohamad"]
+routes={
+    'alex' : ['beirut','saida','sour'] ,
+    'rawad' : ['beirut','aley','zahle'],
+    'jhony' : ['beirut','batroun','zgharta'],
+    'mohamad' : ['zgharta','tripoli','akkar']
+}
 #the function that will add a city to the list of cities.
 #O(len(cities))
 def add_city():
@@ -11,7 +17,7 @@ def add_city():
         print("The city you entered already exists in the list!") #O(1)
     print(cities)       #O(1)
 
-#
+#the function that will add a new driver to the list of drivers.
 def add_driver():
     print("Please enter the first and last name of the driver you want to add: ")
     driver=input("")
@@ -20,6 +26,15 @@ def add_driver():
     else:
         print("The driver you entered is already a part of our community!")
     print(drivers)
+
+#
+def add_route():
+    print("Please enter the driver that you want to add a city to his route: ")
+    driver=input("")
+    if driver not in drivers:
+        print("The driver's name you enter is not available in our driver's list.")
+    else:
+        print("Please enter the name of the city that you want to add to this driver's route: ")
 
 #the function that will run the main page.
 #
@@ -39,8 +54,8 @@ def main():
             add_city()
         elif user_input==2:
             add_driver()
-        # elif user_input==3:
-        #     add_route()
+        elif user_input==3:
+            add_route()
         # elif user_input==4:
         #     remove_city()
         # elif user_input==5:
