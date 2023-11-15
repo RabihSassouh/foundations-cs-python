@@ -40,8 +40,21 @@ def add_route():
         if new_city not in routes.driver():
             routes['driver'].append(new_city)
     print(routes)
-        
-
+    
+#
+def remove_city():
+    print("Please enter the driver that you want to remove a city from his route: ")
+    driver=input("")
+    if driver not in drivers:
+        print("The driver's name you enter is not available in our driver's list.")
+    else:
+        print("Please enter the name of the city that you want to remove from",driver,"route.")
+        delete_city=input("")       
+        if delete_city not in routes[driver]:
+            print("The city you entered is already not in the route of ",driver)
+        else:
+            routes[driver].remove(delete_city)
+        print(routes)
 #the function that will run the main page.
 #
 def main():
@@ -62,8 +75,8 @@ def main():
             add_driver()
         elif user_input==3:
             add_route()
-        # elif user_input==4:
-        #     remove_city()
+        elif user_input==4:
+            remove_city()
         # elif user_input==5:
         #     remove_driver()
         # elif user_input==6:
