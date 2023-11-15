@@ -1,11 +1,12 @@
 cities=["beirut","saida","batroun","zgharta","aley","zahle","sour","tripoli","akkar"]
 drivers=["alex","rawad","jhony","mohamad"]
 routes={
-    'alex' : ['beirut','saida','sour'] ,
+    drivers[0] : ['beirut','saida','sour'] ,
     'rawad' : ['beirut','aley','zahle'],
     'jhony' : ['beirut','batroun','zgharta'],
     'mohamad' : ['zgharta','tripoli','akkar']
 }
+print(routes)
 #the function that will add a city to the list of cities.
 #O(len(cities))
 def add_city():
@@ -35,6 +36,11 @@ def add_route():
         print("The driver's name you enter is not available in our driver's list.")
     else:
         print("Please enter the name of the city that you want to add to this driver's route: ")
+        new_city=input("")
+        if new_city not in routes.driver():
+            routes['driver'].append(new_city)
+    print(routes)
+        
 
 #the function that will run the main page.
 #
