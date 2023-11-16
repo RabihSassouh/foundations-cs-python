@@ -83,6 +83,19 @@ def remove_driver():
             del drivers[i]
             print(drivers)
             return
+
+#
+def check_deliver():
+    print("Please enter the name of the city that you want to check who delivers to it: ")
+    deliver=input("")
+    if deliver not in cities:
+        print("We are sorry, the city you enter is not in any of our routes.")
+    else:
+        print("The driver(s) who reach",deliver,"is/are: ")
+        for i in range (len(drivers)):
+            if deliver in drivers[i]['route']:
+                print(drivers[i]['name'])
+                
 #the function that will run the main page.
 #
 def main():
@@ -107,8 +120,8 @@ def main():
             remove_city()
         elif user_input==5:
             remove_driver()
-        # elif user_input==6:
-        #     check_deliver()
+        elif user_input==6:
+            check_deliver()
         elif user_input==7:
             print("closing the program!...")
         else:
