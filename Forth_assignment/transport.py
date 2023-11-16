@@ -44,28 +44,33 @@ def add_route():
             print("Please enter the name of the city that you want to add to this driver's route: ")
             new_city=input("")
             if new_city not in drivers[i]['route']:
-                    drivers[i]['route'].append(new_city)
-                    print(drivers)
-                    return
+                drivers[i]['route'].append(new_city)
+                print(drivers)
+                return
             else:
-                    print("the name of the city that you entered is already on this driver's route.")
-                    return
+                print("the name of the city that you entered is already on this driver's route.")
+                return
             
     
 # #
-# def remove_city():
-#     print("Please enter the driver that you want to remove a city from his route: ")
-#     driver=input("")
-#     if driver not in drivers:
-#         print("The driver's name you enter is not available in our driver's list.")
-#     else:
-#         print("Please enter the name of the city that you want to remove from",driver,"route.")
-#         delete_city=input("")       
-#         if delete_city not in routes[driver]:
-#             print("The city you entered is already not in the route of ",driver)
-#         else:
-#             routes[driver].remove(delete_city)
-#         print(routes)
+def remove_city():
+    print("Please enter the name of the driver that you want to remove a city from his route: ")
+    driver=input("")
+    for i in range (len(drivers)):
+        if drivers[i]['name'] != driver:
+            print("The driver's name you enter is not available in our driver's list.")
+            return
+        else:
+            print("Please enter the name of the city that you want to remove from",driver,"route.")
+            delete_city=input("")       
+            if delete_city not in drivers[i]['route']:
+                print("The city you entered is already not in the route of ",driver)
+                return
+            else:
+                drivers[i]['route'].remove(delete_city)
+                print(drivers)
+                return
+            
 # #
 # def remove_driver():
 #     print("Please enter the name of the driver who you want to remove from the list of drivers.")
@@ -95,8 +100,8 @@ def main():
             add_driver()
         elif user_input==3:
             add_route()
-        # elif user_input==4:
-        #     remove_city()
+        elif user_input==4:
+            remove_city()
         # elif user_input==5:
         #     remove_driver()
         # elif user_input==6:
