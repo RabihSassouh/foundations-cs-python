@@ -72,14 +72,17 @@ def remove_city():
                 return
             
 # #
-# def remove_driver():
-#     print("Please enter the name of the driver who you want to remove from the list of drivers.")
-#     delete_driver=input("")
-#     if delete_driver not in drivers:
-#         print("The name you entered is not a driver in our company.")
-#     else:
-#         drivers.remove(delete_driver)
-#     print(drivers)
+def remove_driver():
+    print("Please enter the name of the driver who you want to remove from the list of drivers.")
+    delete_driver=input("")
+    for i in range (len(drivers)):
+        if drivers[i]['name'] != delete_driver:
+            print("The name you entered is not a driver in our company.")
+            return
+        else:
+            del drivers[i]
+            print(drivers)
+            return
 #the function that will run the main page.
 #
 def main():
@@ -102,8 +105,8 @@ def main():
             add_route()
         elif user_input==4:
             remove_city()
-        # elif user_input==5:
-        #     remove_driver()
+        elif user_input==5:
+            remove_driver()
         # elif user_input==6:
         #     check_deliver()
         elif user_input==7:
