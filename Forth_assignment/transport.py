@@ -11,11 +11,24 @@ print(drivers)
 def add_city():
     print("Please enter the name of the city you want to add: ") #O(1)
     city=input("")
-    if city not in cities:      #O(len(cities))
-        cities.append(city)     #O(1)
-    else:
-        print("The city you entered already exists in the list!") #O(1)
-    print(cities)       #O(1)
+    city=city.lower()
+    city_list=[city]
+    if len(city)>58:
+        print("Please enter a valid city name!")
+        return
+    for i in range (len(city_list)):
+        if city_list[i].isalpha() or city_list[i]==" ":
+            if city not in cities:      #O(len(cities))
+                cities.append(city)     #O(1)
+                print(cities)  
+                return
+            else:
+                print("The city you entered already exists in the list!") #O(1)
+                print(cities)  
+                return
+        else: 
+            print("Please enter a valid city name!")
+            return
 
 #the function that will add a new driver to the list of drivers.
 def add_driver():
