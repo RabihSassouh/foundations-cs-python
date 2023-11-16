@@ -33,20 +33,24 @@ def add_driver():
     
 
 #
-# def add_route():
-#     print("Please enter the driver that you want to add a city to his route: ")
-#     driver=input("")
-#     if driver not in drivers:
-#         print("The driver's name you enter is not available in our driver's list.")
-#     else:
-#         print("Please enter the name of the city that you want to add to this driver's route: ")
-#         new_city=input("")
-#         if new_city not in routes[driver]:
-#             print("where ")
-#             routes[driver].append(new_city)
-#         else:
-#             print("the name of the city that you entered is already on this driver's route.")
-#     print(routes)
+def add_route():
+    print("Please enter the name of the driver that you want to add a city to his route: ")
+    driver=input("")
+    for i in range (len(drivers)):
+        if drivers[i]['name']!=driver:
+            print("The driver's name you enter is not available in our driver's list.")
+            return
+        else:
+            print("Please enter the name of the city that you want to add to this driver's route: ")
+            new_city=input("")
+            if new_city not in drivers[i]['route']:
+                    drivers[i]['route'].append(new_city)
+                    print(drivers)
+                    return
+            else:
+                    print("the name of the city that you entered is already on this driver's route.")
+                    return
+            
     
 # #
 # def remove_city():
@@ -89,8 +93,8 @@ def main():
             add_city()
         elif user_input==2:
             add_driver()
-        # elif user_input==3:
-        #     add_route()
+        elif user_input==3:
+            add_route()
         # elif user_input==4:
         #     remove_city()
         # elif user_input==5:
