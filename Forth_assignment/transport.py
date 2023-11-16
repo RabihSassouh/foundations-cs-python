@@ -32,14 +32,26 @@ def add_city():
 
 #the function that will add a new driver to the list of drivers.
 def add_driver():
-    print("Please enter the first and last name of the driver you want to add: ")
+    print("Please enter the name of the driver you want to add: ")
     driver=input("")
     for i in range (len(drivers)):
         if drivers[i]['name']==driver:
             print("The driver you entered is already a part of our community!")
             return
         else:
-            dic={'name':driver, 'route':[]}
+            print("Please enter the cities you want to add to",driver,"route separated by a coma ',': ")
+            new_route=input("").lower()
+            new_route=[new_route]
+            for i in new_route:
+                new_route=i.split(',')
+            for j in range (len(new_route)):
+                if new_route[j].isalpha() or new_route[j]==" ":
+                    if new_route[j] not in cities:
+                        cities.append(new_route[j])
+                        print(cities)
+                else:
+                    print("Please enter a valid city name!")
+            dic={'name':driver, 'route':new_route}
             drivers.append(dic)
             print(drivers)
             return 
