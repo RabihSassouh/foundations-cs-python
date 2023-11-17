@@ -10,7 +10,7 @@ print(drivers)
 # params: none
 # add a city to the list of cities.
 
-def add_city():   #O(len(cities))
+def add_city():   #O(len(city_list)**2 * len(cities))
     print("Please enter the name of the city you want to add: ") #O(1)
     city=input("")
     city=city.lower()
@@ -18,8 +18,8 @@ def add_city():   #O(len(cities))
     if len(city)>58:
         print("Please enter a valid city name!")
         return
-    for i in range (len(city_list)): #O(len(cities))
-        if city_list[i].isalpha() or city_list[i]==" ": #O(len(cities))
+    for i in range (len(city_list)): #O(len(city_list))
+        if city_list[i].isalpha() or city_list[i]==" ": #O(len(city_list))
             if city not in cities:      #O(len(cities))
                 cities.append(city)     #O(1)
                 print(cities)           #O(1)
@@ -66,11 +66,11 @@ def add_driver():
 # add route
 # params: none
 # add a city to a drivers route
-def add_route():
+def add_route():    #O(len(drivers)*len(drivers[name][]))
     print("Please enter the name of the driver that you want to add a city to his route: ")
     driver=input("")
-    for i in range (len(drivers)):
-        if driver in drivers[i]['name']:
+    for i in range (len(drivers)):  #O(len(drivers))
+        if driver in drivers[i]['name']:    #O(len(drivers[name][]))
             print("Please enter the name of the city that you want to add to this driver's route: ")
             new_city=input("")
             new_city=new_city.lower()
@@ -84,7 +84,7 @@ def add_route():
                         if new_city not in cities: #O(len(cities))
                             cities.append(new_city)     #O(1)
                             print(cities)           #O(1)
-                            if new_city not in drivers[i]['route']:
+                            if new_city not in drivers[i]['route']:     #O(len(drivers[][route]))
                                 drivers[i]['route'].append(new_city)
                                 print(drivers)
                                 return
@@ -92,52 +92,54 @@ def add_route():
                                 print("the name of the city that you entered is already on this driver's route.")
                                 return
                     else: 
-                        print("Please enter a valid city name!")
+                        print("Please enter a valid city name!")    #O(1)
                         return
         else:
-            print("The driver's name you enter is not available in our driver's list.")
+            print("The driver's name you enter is not available in our driver's list.") #O(1)
             return    
     
 # remove city
 # params: none
 # removes a city from the route of a driver.
-def remove_city():
+
+def remove_city():  #O(len(drivers)*len(drivers[name][])) or O(len(drivers)*len(drivers[][route]))
     print("Please enter the name of the driver that you want to remove a city from his route: ")
-    driver=input("")
-    for i in range (len(drivers)):
-        if drivers[i]['name'] != driver:
+    driver=input("")    
+    for i in range (len(drivers)):  #O(len(drivers))
+        if drivers[i]['name'] != driver:    #O(len(drivers[name][]))
             print("The driver's name you enter is not available in our driver's list.")
             return
         else:
             print("Please enter the name of the city that you want to remove from",driver,"route.")
-            delete_city=input("")       
-            if delete_city not in drivers[i]['route']:
-                print("The city you entered is already not in the route of ",driver)
+            delete_city=input("")       #O(1)
+            if delete_city not in drivers[i]['route']:  #O(len(drivers[][route]))
+                print("The city you entered is already not in the route of ",driver)    #O(1)
                 return
             else:
-                drivers[i]['route'].remove(delete_city)
-                print(drivers)
+                drivers[i]['route'].remove(delete_city) #O(1)
+                print(drivers)  #O(1)
                 return
             
 # remove driver
 # params:none
 # remove a driver and his route from the list of drivers in the company.
-def remove_driver():
+
+def remove_driver():    #O(len(drivers)*len(drivers)[name][])
     print("Please enter the name of the driver who you want to remove from the list of drivers.")
-    delete_driver=input("")
-    for i in range (len(drivers)):
-        if drivers[i]['name'] != delete_driver:
-            print("The name you entered is not a driver in our company.")
+    delete_driver=input("") #O(1)
+    for i in range (len(drivers)):  #O(len(drivers))
+        if drivers[i]['name'] != delete_driver: #O(len(drivers[name][]))
+            print("The name you entered is not a driver in our company.")   #O(1)
             return
         else:
-            del drivers[i]
-            print(drivers)
+            del drivers[i] #O(1)
+            print(drivers)  #O(1)
             return
 
 #Check_deliver
 #params:none
 #Check the deliverability to a certain city
-def check_deliver():
+def check_deliver(): #O(len(drivers)*len(drivers[][route]))
     print("Please enter the name of the city that you want to check who delivers to it: ") #O(1)
     deliver=input("")
     if deliver not in cities:   #O(len(cities))
@@ -147,9 +149,11 @@ def check_deliver():
         for i in range (len(drivers)):          #O(len(drivers))
             if deliver in drivers[i]['route']:  #O(len(drivers[][route]))
                 print(drivers[i]['name'])        #O(1)
-                
+       
+# main
+# params: none                
 #the function that will run the main page.
-#
+
 def main():
     user_input=0
     while user_input !=7:
@@ -178,4 +182,10 @@ def main():
             print("closing the program!...")
         else:
             print("Invalid input, please enter a number between 1 and 6")
-main()        
+
+
+# running the program!
+try:
+    main()
+except:
+    print("Invalid input!")        
