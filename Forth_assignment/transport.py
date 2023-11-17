@@ -1,11 +1,31 @@
 cities=["beirut","saida","batroun","zgharta","aley","zahle","sour","tripoli","akkar"]
-# drivers=["alex","rawad","jhony","mohamad"]
 drivers=[{'name':'alex','route':['beirut','saida','sour']},
 {'name': 'rawad','route':['beirut','aley','zahle']},
 {'name': 'jhony', 'route': ['beirut','batroun','zgharta']},
 {'name':'mohamad', 'route' : ['zgharta','tripoli','akkar']}]
 
 print(drivers)
+# #the function that validate if a city is valid.
+# def check_city():
+#     city=input("")
+#     city=city.lower()
+#     city_list=[city]
+#     if len(city)>58:
+#         print("Please enter a valid city name!")
+#         return
+#     for i in range (len(city_list)):
+#         if city_list[i].isalpha() or city_list[i]==" ":
+#             if city not in cities:      #O(len(cities))
+#                 cities.append(city)     #O(1)  
+#                 return
+#             # else:
+#             #     print("The city you entered already exists in the list!") #O(1)
+#             #     print(cities)  
+#             #     return
+#         else: 
+#             print("Please enter a valid city name!")
+#             return
+
 #the function that will add a city to the list of cities.
 #O(len(cities))
 def add_city():
@@ -16,11 +36,11 @@ def add_city():
     if len(city)>58:
         print("Please enter a valid city name!")
         return
-    for i in range (len(city_list)):
-        if city_list[i].isalpha() or city_list[i]==" ":
+    for i in range (len(city_list)): #O(len(cities))
+        if city_list[i].isalpha() or city_list[i]==" ": #O(len(cities))
             if city not in cities:      #O(len(cities))
                 cities.append(city)     #O(1)
-                print(cities)  
+                print(cities)           #O(1)
                 return
             else:
                 print("The city you entered already exists in the list!") #O(1)
@@ -35,26 +55,28 @@ def add_driver():
     print("Please enter the name of the driver you want to add: ")
     driver=input("")
     for i in range (len(drivers)):
-        if drivers[i]['name']==driver:
-            print("The driver you entered is already a part of our community!")
-            return
-        else:
+        if drivers[i]['name']!=driver:
             print("Please enter the cities you want to add to",driver,"route separated by a coma ',': ")
-            new_route=input("").lower()
+            new_route=input("")
+            new_route=new_route.lower()
             new_route=[new_route]
             for i in new_route:
                 new_route=i.split(',')
-            for j in range (len(new_route)):
-                if new_route[j].isalpha() or new_route[j]==" ":
-                    if new_route[j] not in cities:
-                        cities.append(new_route[j])
-                        print(cities)
-                else:
-                    print("Please enter a valid city name!")
-            dic={'name':driver, 'route':new_route}
-            drivers.append(dic)
-            print(drivers)
-            return 
+                for j in range (len(new_route)):
+                    if new_route[j].isalpha() or new_route[j]==" ":
+                        if new_route[j] not in cities:
+                            cities.append(new_route[j])
+                    else:
+                        print("Please enter a valid city name!")
+        else:
+            print("The driver you entered is already a part of our community!")
+            return
+            
+        dic={'name':driver, 'route':new_route}
+        drivers.append(dic)
+        print(cities)
+        print(drivers)
+        return
     
 
 #
@@ -68,13 +90,27 @@ def add_route():
         else:
             print("Please enter the name of the city that you want to add to this driver's route: ")
             new_city=input("")
-            if new_city not in drivers[i]['route']:
-                drivers[i]['route'].append(new_city)
-                print(drivers)
+            new_city=new_city.lower()
+            city_list=[new_city]
+            if len(new_city)>58:
+                print("Please enter a valid city name!")
                 return
             else:
-                print("the name of the city that you entered is already on this driver's route.")
-                return
+                for i in range (len(city_list)): #O(len(cities))
+                    if city_list[i].isalpha() or city_list[i]==" ": 
+                        if new_city not in cities: #O(len(cities))
+                            cities.append(new_city)     #O(1)
+                            print(cities)           #O(1)
+                            if new_city not in drivers[i]['route']:
+                                drivers[i]['route'].append(new_city)
+                                print(drivers)
+                                return
+                            else:
+                                print("the name of the city that you entered is already on this driver's route.")
+                                return
+                    else: 
+                        print("Please enter a valid city name!")
+                        return
             
     
 # #
