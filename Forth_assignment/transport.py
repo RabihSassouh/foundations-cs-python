@@ -47,7 +47,6 @@ def add_driver():
             new_route=[new_route]
             for i in new_route:
                 new_route=i.split(',')
-                print(new_route)
             for j in range (len(new_route)):
                 if new_route[j].isalpha() or new_route[j]==" ":
                     dic={'name':driver, 'route':new_route}
@@ -56,6 +55,7 @@ def add_driver():
                     while new_route[j] not in cities:
                           cities.append(new_route[j])
                           print(cities)
+                    return
                               
                 else:
                     print("Please enter a valid city name!")
