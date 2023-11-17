@@ -84,17 +84,14 @@ def add_route():
     print("Please enter the name of the driver that you want to add a city to his route: ")
     driver=input("")
     for i in range (len(drivers)):
-        if drivers[i]['name']!=driver:
-            print("The driver's name you enter is not available in our driver's list.")
-            return
-        else:
+        if driver in drivers[i]['name']:
             print("Please enter the name of the city that you want to add to this driver's route: ")
             new_city=input("")
             new_city=new_city.lower()
             city_list=[new_city]
-            if len(new_city)>58:
+            if len(city_list)>58:
                 print("Please enter a valid city name!")
-                return
+                
             else:
                 for i in range (len(city_list)): #O(len(cities))
                     if city_list[i].isalpha() or city_list[i]==" ": 
@@ -111,7 +108,9 @@ def add_route():
                     else: 
                         print("Please enter a valid city name!")
                         return
-            
+        else:
+            print("The driver's name you enter is not available in our driver's list.")
+            return    
     
 # #
 def remove_city():
