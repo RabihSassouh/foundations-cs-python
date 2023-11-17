@@ -35,32 +35,35 @@ def add_city():   #O(len(city_list)**2 * len(cities))
 # add driver
 # params: none
 # add a new driver and his route to the list of drivers.
+
 def add_driver():
     print("Please enter the name of the driver you want to add: ")
     driver=input("")
     for i in range (len(drivers)):
-        if drivers[i]['name']!=driver:
+        if driver not in drivers[i]['name']:
             print("Please enter the cities you want to add to",driver,"route separated by a coma ',': ")
             new_route=input("")
             new_route=new_route.lower()
             new_route=[new_route]
             for i in new_route:
                 new_route=i.split(',')
-                for j in range (len(new_route)):
-                    if new_route[j].isalpha() or new_route[j]==" ":
-                        if new_route[j] not in cities:
-                            cities.append(new_route[j])
-                    else:
-                        print("Please enter a valid city name!")
-        else:
+                print(new_route)
+            for j in range (len(new_route)):
+                if new_route[j].isalpha() or new_route[j]==" ":
+                    dic={'name':driver, 'route':new_route}
+                    drivers.append(dic)
+                    print(drivers)  
+                    while new_route[j] not in cities:
+                          cities.append(new_route[j])
+                          print(cities)
+                              
+                else:
+                    print("Please enter a valid city name!")
+                    return
+                    
+    else:
             print("The driver you entered is already a part of our community!")
             return
-            
-        dic={'name':driver, 'route':new_route}
-        drivers.append(dic)
-        print(cities)
-        print(drivers)
-        return
     
 
 # add route
