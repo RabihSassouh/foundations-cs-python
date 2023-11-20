@@ -1,20 +1,20 @@
-# function: insertion sort
-# params: list1: a list of items to sort
-# it sorts the elements of list1
-def insertionSort(list1): #O(n^2)
-  border=1
-  while border<len(list1): #O(n), n being the length of the list
-    current=border # the index of the element we are currently dealing with
-    while current>0 and list1[current]<list1[current-1]: #O(n)
-      # swap the out of order elements
-      # temp=list1[current]
-      # list1[current]=list1[current-1]
-      # list1[current-1]=temp
-      list1[current],list1[current-1]=list1[current-1],list1[current] #O(1)
-      current-=1
-    border+=1
+def selectionSort(list1): #O(n^2)
+  border=0
+  while border <len(list1)-1: #O(n), n being the length of the list
+    minIndex=border # contain the index of the minimum element
+    for i in range(border+1, len(list1)): # to find the index of the minimum element, O(n)
+      list1[i]=list1[i].lower()
+      if list1[i]<list1[minIndex]: #O(1), is the line that specifies the order
+        minIndex=i
+    #swap the two elements
+    temp=list1[border] #O(1)
+    list1[border]=list1[minIndex]
+    list1[minIndex]=temp
+
+    # list1[border],list1[minIndex]=list1[minIndex],list1[border]
+
+    border=border+1
 
   print(list1)
-
-list1=['c','a','Z','m']
-insertionSort(list1)
+list1=['e','A','b','Z','a']
+selectionSort(list1)
