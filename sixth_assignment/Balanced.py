@@ -23,29 +23,37 @@ class stack:
             return self.items.pop()
         
 s=stack()
-print("please enter an expression to check if its brackets are balanced:")
-expression=input("")
+
 def check(expression):
+    #gather all open brackets
     for i in (expression):
-        for j in (expression):
-            if i=='(' or i=='[' or i =='{':
-                s.push(i)
-                if j==')':
-                    # for j in (s.items):
-                    #     if j=='(':
-                    return s.pop()
-            # elif i==']':
-            #     for j in (s.items):
-            #         if j=='[':
-            #             return s.pop()
-            # elif i =='}':
-            #     for j in (s.items):
-            #         if j=='{':
-            #             return s.pop()
-                
+        # for j in (expression):
+        if i=='(' or i=='[' or i =='{':
+            s.push(i)
+    #check if each opened bracket have a closed bracket
+        else:
+            current=s.pop()
+            if not s:
+                return False
+            if current=='(':
+                if i!=')':
+                    return False
+            if current=='[':
+                if i!=']':
+                    return False
+            if current=='{':
+                if i!='}':
+                    return False
+    if s:
+        return False
+    return True        
+
+print("please enter an expression to check if its brackets are balanced:")
+expression=input("") 
 check(expression)
 print(s.items)
-# if s.items==[]:
-#     print("The expression you entered is balanced!")
-# else:
-#     print("The expression you entered is NOT balanced")
+        
+if s.items==[]:
+    print("The expression you entered is balanced!")
+else:
+    print("The expression you entered is NOT balanced")
