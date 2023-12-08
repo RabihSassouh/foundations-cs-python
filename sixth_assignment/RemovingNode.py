@@ -38,9 +38,9 @@ class LinkedList:
     print("Please enter the location at which you want to delete the node:")
     index=int(input(""))
     if self.size==0:
-      return None # LL is empty
+      return None 
     x=0
-    temp=self.head # current keeps track of the node I am at
+    temp=self.head 
     while temp.next and x<index:
         prev=temp
         temp=temp.next
