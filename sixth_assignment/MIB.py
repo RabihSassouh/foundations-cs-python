@@ -1,3 +1,4 @@
+#class stack
 class stack:
     def __init__(self):
         self.items=[]
@@ -20,3 +21,24 @@ class stack:
             return None
         else:
             return self.items.pop()
+
+#taking the input from the user and adding it to the stack
+s=stack()
+print("message to encode:")
+x=input("")
+
+#filling the stack and reversing when reaching asterix
+def decode(x):
+    reverse_input=''
+    for i in x: #O(n), where in is the len(x)
+        if i.isalpha() or i.isspace():
+            s.push(i)
+        elif i=='*':
+             while s.IsEmpty() != True:
+                reverse_input =reverse_input + s.pop()
+        else:
+            return
+    print(reverse_input)
+decode(x)
+
+
